@@ -2,9 +2,9 @@
 #include <Arduino.h>
 
 // Custom imports
-#include "src/device/discipline_selector.h"
-#include "src/bouts/bout.h"
-#include "src/disciplines/type.h"
+#include "device/discipline_selector.h"
+#include "bouts/bout.h"
+#include "disciplines/type.h"
 
 // Module variables
 Device::DisciplineSelector disciplineSelector(1); //Initialize DisciplineSelector
