@@ -8,8 +8,8 @@
 //Common imports
 #include "esp_wifi.h"
 
-namespace environment{
-    //Connectivity settings - not implemented but a example for the future
+namespace Environment{
+    //Connectivity configuration
     constexpr const char* DEVICE_ID = "<HOSTNAME>";         //The hostname of this device
     constexpr wifi_mode_t WIFI_MODE = WIFI_MODE_NULL;       //WIFI_MODE_NULL = OFF, WIFI_MODE_STA = Connect to a WIFI network, WIFI_MODE_AP = Host your own WIFI network
     constexpr const char* WIFI_SSID = "<SSID>";             //The name of the WIFI network
@@ -26,7 +26,7 @@ namespace environment{
     //If no pin is connected we get the middle state | of the switch
     constexpr uint8_t DISCIPLINE_SELECTOR_PINS[2] = {1, 2}; //The pins that are used to switch the discipline that is active
 
-    //Bout mode selector switch - This is for a 2-state tumbler switch
+    //Bout mode selector configuration - This is for a 2-state tumbler switch
     //For two states only 1 one pin is needed using a HIGH or LOW signal
     constexpr uint8_t BOUT_MODE_SELECTOR_PIN = 1;           //The pin that is used to switch the mode that is active
 

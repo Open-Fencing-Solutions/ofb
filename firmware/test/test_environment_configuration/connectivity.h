@@ -1,8 +1,8 @@
 #pragma once
-#ifndef TEST_CONNECTIVITY
-#define TEST_CONNECTIVITY
+#ifndef TEST_CONNECTIVITY_H
+#define TEST_CONNECTIVITY_H
 
-namespace connectivity {
+namespace Connectivity {
     void run_tests();
 }
 
