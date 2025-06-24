@@ -13,7 +13,7 @@ namespace Device{
   class DisciplineSelector {
     public:
       //Define a constructor
-      DisciplineSelector(uint8_t selectorPin);
+      DisciplineSelector(const uint8_t selectorPins[2]);
 
       //Define public methods
       Discipline::Type getSelectedDiscipline();
@@ -27,7 +27,8 @@ namespace Device{
       //Define private methods
 
       //Define private variables
-      uint8_t selectorPin;
+      uint8_t leftPin;
+      uint8_t rightPin;
   };
 }
 

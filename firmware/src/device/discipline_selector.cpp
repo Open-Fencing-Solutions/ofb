@@ -9,8 +9,9 @@
 
 namespace Device{
   // Constructor implementation
-  DisciplineSelector::DisciplineSelector(uint8_t selectorPin){
-    this->selectorPin = selectorPin;
+  DisciplineSelector::DisciplineSelector(const uint8_t selectorPins[2]){
+    this->leftPin = selectorPins[0];
+    this->rightPin = selectorPins[1];
   }
 
   Discipline::Type DisciplineSelector::getSelectedDiscipline(){
