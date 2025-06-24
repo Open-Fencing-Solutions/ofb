@@ -3,7 +3,7 @@
 
 //Common imports
 
-//Custom imports
+//Project imports
 #include "foil.h"
 #include "../bouts/side.h"
 

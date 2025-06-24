@@ -3,7 +3,7 @@
 
 //Common imports
 
-//Custom imports
+//Project imports
 #include "discipline_selector.h"
 #include "../disciplines/type.h"
 

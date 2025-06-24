@@ -7,7 +7,7 @@
 
 //Common imports
 
-//Custom imports
+//Project imports
 #include "../disciplines/type.h"
 #include "../fencers/fencer.h"
 

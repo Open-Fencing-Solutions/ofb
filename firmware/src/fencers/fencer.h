@@ -7,7 +7,7 @@
 
 //Common imports
 
-//Custom imports
+//Project imports
 #include "../bouts/side.h"
 #include "../disciplines/type.h"
 #include "../lames/base.h"

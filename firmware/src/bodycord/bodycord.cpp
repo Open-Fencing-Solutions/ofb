@@ -6,7 +6,7 @@
 //Class header import
 #include "bodycord.h"
 
-//Custom imports
+//Project imports
 
 
 // Constructor implementation

@@ -7,7 +7,7 @@
 
 //Common imports
 
-//Custom imports
+//Project imports
 
 
 class Bodycord {

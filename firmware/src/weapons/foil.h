@@ -9,7 +9,7 @@
 //Base class import
 #include "base.h"
 
-//Custom imports
+//Project imports
 #include "../bouts/side.h"
 
 namespace Weapon{

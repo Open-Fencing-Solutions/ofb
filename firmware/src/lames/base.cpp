@@ -3,7 +3,7 @@
 
 //Common imports
 
-//Custom imports
+//Project imports
 #include "base.h"
 #include "foil.h"
 #include "../disciplines/type.h"

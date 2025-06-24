@@ -7,7 +7,7 @@
 
 //Common imports
 
-//Custom imports
+//Project imports
 
 namespace Discipline {
   enum class Type {

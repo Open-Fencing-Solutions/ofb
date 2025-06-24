@@ -4,7 +4,7 @@
 // Environment configuration import
 #include "environment.h"
 
-// Custom imports
+//Project imports
 #include "device/discipline_selector.h"
 #include "bouts/bout.h"
 #include "disciplines/type.h"
@@ -16,7 +16,7 @@ Bout::Bout* bout = nullptr; //Create a bout.. This will also be (ab)ussed for tr
 
 void setup() {
   // Intialize a serial connection for debugging
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   // Get a discipline from the selector and initialize a bout
   selectedDiscipline = disciplineSelector.getSelectedDiscipline();

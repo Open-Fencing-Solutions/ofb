@@ -6,7 +6,7 @@
 
 //Common imports
 
-//Custom imports
+//Project imports
 #include "../disciplines/type.h"
 
 namespace Device{

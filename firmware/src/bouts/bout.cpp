@@ -3,7 +3,7 @@
 
 //Common imports
 
-//Custom imports
+//Project imports
 #include "../disciplines/type.h"
 #include "side.h"
 #include "bout.h"
