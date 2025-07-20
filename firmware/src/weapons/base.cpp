@@ -27,8 +27,12 @@ namespace Weapon{
 
   }
 
+  void Base::attachBodyCord(Bodycord* bodycord){
+    this->bodycord = bodycord;
+  }
 
-  void Base::activate(Bout::Side side){
+
+  void Base::enable(Bout::Side side){
     //Initialize a method pointer for storing the interrupt handler
     void (*interruptHandler)() = nullptr;
 
@@ -40,17 +44,17 @@ namespace Weapon{
     }
 
     //Activate the interrupt with the selected handler
-    attachInterrupt(digitalPinToInterrupt(this->tipPin), interruptHandler, CHANGE);
+    attachInterrupt(digitalPinToInterrupt(this->signalPin), interruptHandler, CHANGE);
   }
 
-  void Base::deactivate(){
+  void Base::disable(){
     //Activate the interrupt with the selected handler
-    detachInterrupt(digitalPinToInterrupt(this->tipPin));
+    detachInterrupt(digitalPinToInterrupt(this->signalPin));
   }
 
-  bool Base::isDepressed(){
+  bool Base::isActivated(){
     //Compare the reading of the tip against the value that it should be
-    return digitalRead(this->tipPin) == isDepressedValue;
+    return digitalRead(this->signalPin) == signalActivatedReading;
   }
 
 

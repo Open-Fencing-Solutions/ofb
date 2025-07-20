@@ -1,5 +1,5 @@
-#ifndef DEVICE_DISCIPLINE_SELECTOR_H
-#define DEVICE_DISCIPLINE_SELECTOR_H
+#ifndef DEVICE_MODE_SELECTOR_H
+#define DEVICE_MODE_SELECTOR_H
 
 //Built-in Imports
 #include <Arduino.h>
@@ -7,21 +7,27 @@
 //Common imports
 
 //Project imports
-#include "../disciplines/type.h"
+
 
 namespace Device{
-  class DisciplineSelector {
+  enum class Mode {
+    TWO_PERSONS,
+    ONE_PERSON,
+    TRAINING
+  };
+
+  class ModeSelector {
     public:
       //Define a constructor
-      DisciplineSelector(const uint8_t selectorPins[2]);
+      ModeSelector(const uint8_t selectorPins[2]);
 
       //Define public methods
-      Discipline::Type getSelectedDiscipline();
+      Mode getSelectedMode();
 
       void handleInterrupts();
 
       //Define public variables
- 
+
     protected:
       //Empty for now
       

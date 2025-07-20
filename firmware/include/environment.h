@@ -28,7 +28,7 @@ namespace Environment{
 
     //Bout mode selector configuration - This is for a 2-state tumbler switch
     //For two states only 1 one pin is needed using a HIGH or LOW signal
-    constexpr uint8_t BOUT_MODE_SELECTOR_PIN = 1;           //The pin that is used to switch the mode that is active
+    constexpr uint8_t MODE_SELECTOR_PIN[2] = {1, 2};   //The pins that are used to switch the device mode that is active
 
     //Fencer bodycord configuration
     //Array index 0 = Fencer Red (left side of the piste)

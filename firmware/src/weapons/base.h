@@ -22,10 +22,10 @@ namespace Weapon {
       static Base* getWeaponByDiscipline(Discipline::Type disciplineType);
 
       //Define public methods
-      void attachBodyCord(Bodycord bodycord);
-      void activate(Bout::Side side);
-      void deactivate();
-      bool isDepressed();
+      void attachBodyCord(Bodycord* bodycord);
+      void enable(Bout::Side side);
+      void disable();
+      bool isActivated();
 
       //Define public variables
 
@@ -35,8 +35,9 @@ namespace Weapon {
       static void IRAM_ATTR greenSideInterruptHandler();
 
       //Define protected variables
-      uint8_t tipPin = 0;
-      static const uint8_t isDepressedValue = LOW;
+      uint8_t signalPin = 0;
+      Bodycord* bodycord = nullptr;
+      static const uint8_t signalActivatedReading = LOW;
 
     private:
       //Define private methods

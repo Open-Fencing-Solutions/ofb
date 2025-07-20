@@ -11,11 +11,11 @@
 namespace Weapon{
   // Constructor and destructor implementation
   Foil::Foil(){
-    pinMode(this->tipPin, INPUT); //Put the tipPin in the correct mode
+    pinMode(this->signalPin, INPUT); //Put the signalPin in the correct mode
   }
 
   Foil::~Foil(){
-    deactivate(); //Deactivate (detach interrupt) the weapon
-    pinMode(this->tipPin, INPUT); //Default pin mode is INPUT
+    disable(); //Disable (detach interrupt) the weapon
+    pinMode(this->signalPin, INPUT); //Default pin mode is INPUT
   }
 }

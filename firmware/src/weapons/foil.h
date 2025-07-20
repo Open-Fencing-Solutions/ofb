@@ -30,8 +30,8 @@ namespace Weapon{
       
 
       //Define protected variables
-      const uint8_t tipPin = 1;
-      static const uint8_t isDepressedValue = HIGH;
+      const uint8_t signalPin = 1;
+      static const uint8_t signalActivatedReading = HIGH;
 
     private:
       //Define private methods

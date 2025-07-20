@@ -12,6 +12,12 @@
 #include "../fencers/fencer.h"
 
 namespace Bout{
+  enum class State {
+    INIT,
+    MONITORING,
+    HIT,
+    LOCKOUT,
+  };
   class Bout {
     public:
         //Define a constructor and destructor
@@ -23,7 +29,7 @@ namespace Bout{
       //Define public variables
       //Piste piste;
       Fencer fencers[2];
-
+      State state;
 
     protected:
       //Empty for now
