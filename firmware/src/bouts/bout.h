@@ -18,18 +18,20 @@ namespace Bout{
     HIT,
     LOCKOUT,
   };
-  class Bout {
+
+  class Bout{
     public:
-        //Define a constructor and destructor
-        Bout(Discipline::Type disciplineType);
-        ~Bout();
+      //Define a constructor and destructor
+      Bout();
+      ~Bout();
     
       //Define public methods
 
       //Define public variables
       //Piste piste;
-      Fencer fencers[2];
-      State state;
+      //Fencer fencers[2];
+      State state = State::INIT;
+      Discipline::Type discipline;
 
     protected:
       //Empty for now

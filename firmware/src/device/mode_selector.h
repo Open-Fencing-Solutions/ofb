@@ -18,8 +18,12 @@ namespace Device{
 
   class ModeSelector {
     public:
+      //Static instance pointer
+      static ModeSelector* activeInstance;
+
       //Define a constructor
       ModeSelector(const uint8_t selectorPins[2]);
+      ~ModeSelector();
 
       //Define public methods
       Mode getSelectedMode();
@@ -29,14 +33,17 @@ namespace Device{
       //Define public variables
 
     protected:
-      //Empty for now
+      //empty for now
       
     private:
       //Define private methods
+      static void IRAM_ATTR interruptHandler();
 
       //Define private variables
-      uint8_t leftPin;
-      uint8_t rightPin;
+      uint8_t topPin;
+      uint8_t bottomPin;
+      bool interruptTriggered = false;
+
   };
 }
 
