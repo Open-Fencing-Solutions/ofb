@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PUSH_BUTTON_H
-#define PUSH_BUTTON_H
+#ifndef DEVICE_WAKE_UP_BUTTON
+#define DEVICE_WAKE_UP_BUTTON
 
 //Built-in Imports
 #include <Arduino.h>
@@ -11,25 +11,25 @@
 
 
 namespace Device {
-  class PushButton {
+  class WakeUpButton {
     public:
-      //Define destructor, because this is a base class no constructor
-      virtual ~PushButton() = 0;
+      //Define constructor and destructor
+      WakeUpButton(uint8_t signalPin);
+      ~WakeUpButton();
    
       //Define public static methods
 
       //Define public methods
-      void PushButton::Enable();
+      void enable();
+      void disable();
 
       //Define public variables
 
     protected:
       //Define protected methods
-      static void IRAM_ATTR interruptHandler();
 
       //Define protected variables
       uint8_t signalPin = 0;
-      static const uint8_t signalActivatedReading = LOW;
 
     private:
       //Define private methods

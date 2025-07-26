@@ -2,7 +2,6 @@
 #include <Arduino.h>
 
 // Common imports
-#include <ArduinoLog.h>
 
 // Environment configuration import
 #include "environment.h"

@@ -60,8 +60,8 @@ namespace Device{
     detachInterrupt(digitalPinToInterrupt(this->bottomPin));
 
     //Revert the pins to default INPUT mode
-    pinMode(topPin, INPUT); 
-    pinMode(bottomPin, INPUT);
+    pinMode(this->topPin, INPUT); 
+    pinMode(this->bottomPin, INPUT);
   }
 
   Device::Mode ModeSelector::getSelectedMode(){
