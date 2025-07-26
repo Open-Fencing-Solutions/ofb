@@ -8,7 +8,8 @@
 namespace Bout {
   enum class Side {
     Red,
-    Green
+    Green,
+    ARRAY_SIZE
   };
 }
 #endif

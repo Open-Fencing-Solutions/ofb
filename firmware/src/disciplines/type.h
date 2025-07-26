@@ -13,7 +13,8 @@ namespace Discipline {
   enum class Type {
     Foil,
     Sabre,
-    Epee
+    Epee,
+    ARRAY_SIZE
   };
 }
 #endif

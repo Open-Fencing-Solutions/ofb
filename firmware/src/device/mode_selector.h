@@ -13,7 +13,8 @@ namespace Device{
   enum class Mode {
     TWO_PERSONS,
     ONE_PERSON,
-    TRAINING
+    TRAINING,
+    ARRAY_SIZE
   };
 
   class ModeSelector {
@@ -26,9 +27,10 @@ namespace Device{
       ~ModeSelector();
 
       //Define public methods
-      Mode getSelectedMode();
-
-      void handleInterrupts();
+      void enable(); //Enable the switch and the interupt methods
+      void disable(); //Enable the switch and the interupt methods
+      Mode getSelectedMode(); //Get the device mode selected by the switch
+      void handleInterrupts(); //Method that is triggered by the interrupt flag
 
       //Define public variables
 

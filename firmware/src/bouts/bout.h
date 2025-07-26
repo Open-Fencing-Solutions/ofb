@@ -10,6 +10,7 @@
 //Project imports
 #include "../disciplines/type.h"
 #include "../fencers/fencer.h"
+#include "../device/mode_selector.h"
 
 namespace Bout{
   enum class State {
@@ -17,6 +18,7 @@ namespace Bout{
     MONITORING,
     HIT,
     LOCKOUT,
+    ARRAY_SIZE
   };
 
   class Bout{
@@ -30,7 +32,8 @@ namespace Bout{
       //Define public variables
       //Piste piste;
       //Fencer fencers[2];
-      State state = State::INIT;
+      State state;
+      Device::Mode mode;
       Discipline::Type discipline;
 
     protected:
