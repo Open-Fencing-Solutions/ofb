@@ -1,5 +1,5 @@
-#ifndef DEVICE_MODE_SELECTOR_H
-#define DEVICE_MODE_SELECTOR_H
+#ifndef DEVICE_SIGNAL_MODE_SELECTOR_H
+#define DEVICE_SIGNAL_MODE_SELECTOR_H
 
 //Built-in Imports
 #include <Arduino.h>
@@ -10,26 +10,26 @@
 
 
 namespace Device{
-  enum class Mode {
-    TWO_PERSONS,
-    ONE_PERSON,
-    TRAINING,
-    ARRAY_SIZE
+  enum class SignalMode {
+    LED_AND_BUZZER,
+    ONLY_LED,
+    ONLY_BUZZER,
+    ARRAY_SIZE //Use this integer as a array size without hardcoding :-)
   };
 
-  class ModeSelector {
+  class SignalModeSelector {
     public:
       //Static instance pointer
-      static ModeSelector* activeInstance;
+      static SignalModeSelector* activeInstance;
 
       //Define a constructor
-      ModeSelector(const uint8_t selectorPins[2]);
-      ~ModeSelector();
+      SignalModeSelector(const uint8_t selectorPins[2]);
+      ~SignalModeSelector();
 
       //Define public methods
       void enable(); //Enable the switch and the interupt methods
       void disable(); //Enable the switch and the interupt methods
-      Mode getSelectedMode(); //Get the device mode selected by the switch
+      SignalMode getSelectedSignalMode(); //Get the signal mode selected by the switch
       void handleInterrupts(); //Method that is triggered by the interrupt flag
 
       //Define public variables

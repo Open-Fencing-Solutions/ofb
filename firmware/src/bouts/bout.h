@@ -8,9 +8,10 @@
 //Common imports
 
 //Project imports
-#include "../disciplines/type.h"
 #include "../fencers/fencer.h"
-#include "../device/mode_selector.h"
+#include "../device/discipline_mode_selector.h"
+#include "../device/bout_mode_selector.h"
+#include "../device/signal_mode_selector.h"
 
 namespace Bout{
   enum class State {
@@ -32,9 +33,12 @@ namespace Bout{
       //Define public variables
       //Piste piste;
       //Fencer fencers[2];
-      State state;
-      Device::Mode mode;
-      Discipline::Type discipline;
+      State stateMachine;
+      Device::DisciplineMode disciplineMode;
+      Device::BoutMode boutMode;
+      Device::SignalMode signalMode;
+      
+      
 
     protected:
       //Empty for now

@@ -4,57 +4,57 @@
 //Common imports
 
 //Project imports
-#include "mode_selector.h"
+#include "discipline_mode_selector.h"
 #include "../bouts/bout.h"
 
 //Setup globally accessible pointers
 extern Bout::Bout bout;
 
 //Need to set the activeInstance pointer to a nullptr so that the compiler reserves space for it.
-Device::ModeSelector* Device::ModeSelector::activeInstance = nullptr;
+Device::DisciplineModeSelector* Device::DisciplineModeSelector::activeInstance = nullptr;
 
 namespace Device{
   // Static interrupt handler for the switch
-  void IRAM_ATTR ModeSelector::interruptHandler(){
-    if (ModeSelector::activeInstance) {
-      ModeSelector::activeInstance->interruptTriggered = true;
+  void IRAM_ATTR DisciplineModeSelector::interruptHandler(){
+    if (DisciplineModeSelector::activeInstance) {
+      DisciplineModeSelector::activeInstance->interruptTriggered = true;
     }
   }
 
   // Constructor implementation
-  ModeSelector::ModeSelector(const uint8_t selectorPins[2]){
+  DisciplineModeSelector::DisciplineModeSelector(const uint8_t selectorPins[2]){
     //Set variables for this class instance
     this->topPin = selectorPins[0];
     this->bottomPin = selectorPins[1];
 
     //Set a pointer on the static class to this instance
     //This is the only way to find this instance from the main loop
-    ModeSelector::activeInstance = this;
+    DisciplineModeSelector::activeInstance = this;
   }
 
   // Destructor implementation
-  ModeSelector::~ModeSelector(){
+  DisciplineModeSelector::~DisciplineModeSelector(){
     //Disable the interrupts for this switch
     this->disable();
 
     //Remove this instance pointer from the static class
-    ModeSelector::activeInstance = nullptr;
+    DisciplineModeSelector::activeInstance = nullptr;
   }
 
-  void ModeSelector::enable(){
+  void DisciplineModeSelector::enable(){
     pinMode(topPin, INPUT_PULLUP); //Use internal pull up resistors for a DEFAULT HIGH
     pinMode(bottomPin, INPUT_PULLUP); //Use internal pull up resistors for a DEFAULT HIGH
 
     //Attach interrupts to the tumbler switch pins
-    attachInterrupt(digitalPinToInterrupt(this->topPin), Device::ModeSelector::interruptHandler, CHANGE);
-    attachInterrupt(digitalPinToInterrupt(this->bottomPin), Device::ModeSelector::interruptHandler, CHANGE);
+    attachInterrupt(digitalPinToInterrupt(this->topPin), Device::DisciplineModeSelector::interruptHandler, CHANGE);
+    attachInterrupt(digitalPinToInterrupt(this->bottomPin), Device::DisciplineModeSelector::interruptHandler, CHANGE);
 
     //The procedure for a interrupt triggered is the same as initialization
     //So lets abuse the handleInterrupts method
     this->interruptTriggered = true;
   }
 
-  void ModeSelector::disable(){
+  void DisciplineModeSelector::disable(){
     //Detach the interupts from the switch pins
     detachInterrupt(digitalPinToInterrupt(this->topPin));
     detachInterrupt(digitalPinToInterrupt(this->bottomPin));
@@ -64,7 +64,7 @@ namespace Device{
     pinMode(this->bottomPin, INPUT);
   }
 
-  Device::Mode ModeSelector::getSelectedMode(){
+  Device::DisciplineMode DisciplineModeSelector::getSelectedDisciplineMode(){
     //Read the pin values for the switch
     uint8_t switchPinReadings = (digitalRead(topPin) << 1) | digitalRead(bottomPin);
     
@@ -77,24 +77,24 @@ namespace Device{
     uint8_t switchIndex = (switchPinReadings == 0b10) ? 0 : (switchPinReadings == 0b00) ? 1 : (switchPinReadings == 0b01) ? 2 : 2;
 
     //Get a mode from the Enum based on the index
-    Device::Mode selectedMode = static_cast<Device::Mode>(switchIndex);
+    Device::DisciplineMode selectedMode = static_cast<Device::DisciplineMode>(switchIndex);
 
     Serial.println(static_cast<int>(selectedMode));
     
     return selectedMode;
   }
 
-  void ModeSelector::handleInterrupts(){
+  void DisciplineModeSelector::handleInterrupts(){
     if (this->interruptTriggered != true){
       //Interrupt flag was not set, so early return.
       return;
     }
 
     //Get the mode that is selected
-    Device::Mode selectedMode = ModeSelector::getSelectedMode();
+    Device::DisciplineMode selectedMode = DisciplineModeSelector::getSelectedDisciplineMode();
 
     //Set the mode on the active bout
-    bout.mode = selectedMode;
+    bout.disciplineMode = selectedMode;
 
     //Interrupt handler finshed, so remove the interrupt flag
     this->interruptTriggered = false;

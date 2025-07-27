@@ -4,7 +4,6 @@
 //Common imports
 
 //Project imports
-#include "../disciplines/type.h"
 #include "bout.h"
 
 namespace Bout{
